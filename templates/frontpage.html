@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+    {% comment %}
+    <link rel="stylesheet" href="/static/css/frontpage.css">
+    <link rel="stylesheet" href="/static/css/datepicker.css">
+    {% endcomment %}
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+
+    <div id="frontpageTmpl" class="hide-bindings">
+
+        <div class="w-section hero-section">
+            <div class="w-container hero-content">
+                <div class="w-editable hero-heading slideInDown">PIPAR\TBWA</div>
+                <div class="w-editable hero-subheading">Kynningar</div>
+                <div>
+                    <a href="#Latest-post" class="w-editable w-button button">Browse</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="dateInputsSection">
+            <div class="dateInputs clearfix">
+                    {# input fer hér #}
+            </div>
+        </div>
+        <div class="w-section calendar-section clearfix">
+            <div class="w-container"></div>
+        </div>
+
+
+        <div id="posts" class="w-section main-section bottom-padding">
+{#            <div id="featured-items" class="w-container">#}
+{#                <div class="section-heading">#}
+{#                    <h2 class="w-editable section-title">Featured</h2>#}
+{##}
+{#                    <div class="med-divider"></div>#}
+{#                </div>#}
+{##}
+{#                <div class="w-dyn-list">#}
+{#                    <div class="w-dyn-items w-row w-clearfix">#}
+{##}
+{#                        <div class="w-dyn-item w-col w-col-6 featuredthumbnail" rv-each-item="featured">#}
+{#                            <a data-ix="featured-wrapper" class="w-inline-block featured-wrapper">#}
+{#                                <div>#}
+{#                                    <div class="category-tag-2"> { item.locality }</div>#}
+{#                                    <div class="featured-image"#}
+{#                                         style="background-image: url('/static/images/dev/bungalo.jpg')"></div>#}
+{#                                </div>#}
+{#                                <div class="featured-text">#}
+{#                                    <div class="featured-title">{ item.title.en }</div>#}
+{#                                    <div class="featured-description">{ item.desc.en }</div>#}
+{#                                    <div class="featured-details">#}
+{#                                        <div class="w-clearfix"><img class="author-img"#}
+{#                                                                     src="/static/images/dev/owner.jpg">#}
+{##}
+{#                                            <div class="author-title lite">Andri Birgisson</div>#}
+{#                                            <div class="thumbnail-date lite">September 25, 2015</div>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </a>#}
+{#                        </div>#}
+{#                    </div>#}
+{##}
+{#                </div>#}
+{#            </div>#}
+            <div id="main-items" class="w-container">
+                <div class="section-heading">
+                    <h2 class="w-editable section-title">Presentations</h2>
+
+                    <div class="med-divider"></div>
+                </div>
+                <div class="w-dyn-list">
+                    <div class="w-dyn-items w-row w-clearfix">
+                        <div class="w-dyn-item w-col w-col-4 blog-thumbnail" rv-each-item="promotions">
+                            <div class="w-inline-block thumbnail-wrapper">
+                                <div class="image-wrapper">
+                                    <div class="thumbnail-image" rv-bgimage="item.thumb"></div>
+                                    <div class="category-tag">{ item.author.department }</div>
+                                </div>
+                                <div class="thumbnail-text">
+                                    <a rv-href="item.link" target="_blank" class="card-title">{ item.name }</a>
+                                    <a rv-href="item.editLink" class="editLink pull-right"><span class="texticon ion-edit"></span> Edit</a>
+                                    <div class="preview-text">{ item.description }</div>
+                                </div>
+                                <div class="w-clearfix thumb-details"><img class="author-img"
+                                                                           rv-src="item.author.avatar">
+
+                                    <div class="author-title">{ item.author.userFullName }</div>
+                                    <div class="thumbnail-date">{ item.created }</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="flow-bottom"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-section main-section dark">
+            <div class="w-container">
+                <div class="section-heading">
+                    <h2 class="w-editable white">Stay in Touch</h2>
+                    <div class="med-divider"></div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <div class="w-container">
+                    <div class="w-row">
+                        <div class="w-col w-col-4 w-col-small-4">
+                            <a href="index.html" class="w-inline-block footer-logo">
+                                <div class="long-text">Kynningar</div>
+                            </a>
+                        </div>
+{#                        <div class="w-col w-col-8 w-col-small-8 footer-links">#}
+{#                            <a href="index.html" class="w-editable footer-link">Home</a>#}
+{#                            <a href="categories.html" class="w-editable footer-link">Categories</a>#}
+{#                            <a href="about.html" class="w-editable footer-link">About</a>#}
+{#                            <a href="contact.html" class="w-editable footer-link">Contact</a>#}
+{#                        </div>#}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+    GLOBAL.promotions = {{ recent | safe }};
+</script>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="/static/js/frontpage.js"></script>
+{% endblock %}

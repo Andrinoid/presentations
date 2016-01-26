@@ -1,0 +1,116 @@
+//this file has its own build function in the gulp file and is not part of base.less
+.ui-resizable-handle {
+  position: absolute;
+  font-size: 0.1px;
+  display: block;
+}
+
+.ui-resizable-disabled .ui-resizable-handle,
+.ui-resizable-autohide .ui-resizable-handle {
+  display: none;
+}
+
+.ui-resizable-n {
+  position: absolute;
+  background: orange;
+  cursor: n-resize;
+  height: 7px;
+  width: 100%;
+  top: -5px;
+  left: 0;
+}
+
+.ui-resizable-s {
+  position: absolute;
+  background: orange;
+  cursor: s-resize;
+  height: 7px;
+  width: 100%;
+  bottom: -5px;
+  left: 0;
+}
+
+.ui-resizable-e {
+  position: absolute;
+  background: white;
+  border: solid 1px #1baee1 !important;
+  cursor: e-resize;
+  width: 10px;
+  height: 10px;
+  right: -6px;
+  top: 50%;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  margin-top: 1px;
+  display: none;
+}
+
+.ui-resizable-w {
+  position: absolute;
+  background: white;
+  border: solid 1px #1baee1 !important;
+  cursor: e-resize;
+  width: 10px;
+  height: 10px;
+  left: -6px;
+  top: 50%;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  margin-top: 1px;
+  display: none;
+
+}
+
+.ui-resizable-se {
+  position: absolute;
+  background: orange;
+  cursor: se-resize;
+  width: 12px;
+  height: 12px;
+  right: 1px;
+  bottom: 1px;
+}
+
+.ui-resizable-sw {
+  position: absolute;
+  background: orange;
+  cursor: sw-resize;
+  width: 9px;
+  height: 9px;
+  left: -5px;
+  bottom: -5px;
+}
+
+.ui-resizable-nw {
+  position: absolute;
+  background: orange;
+  cursor: nw-resize;
+  width: 9px;
+  height: 9px;
+  left: -5px;
+  top: -5px;
+}
+
+.ui-resizable-ne {
+  position: absolute;
+  background: orange;
+  cursor: ne-resize;
+  width: 9px;
+  height: 9px;
+  right: -5px;
+  top: -5px;
+}
+
+.focused {
+  border: solid 1px rgba(27, 174, 225, 1) !important;
+  margin: -1px !important;
+  outline: 0px solid transparent;
+  .ui-resizable-w, .ui-resizable-e {
+    display: block;
+  }
+}
+
+.slides {
+  border: dashed 1px rgba(255, 255, 255, 0.60) !important;
+
+}

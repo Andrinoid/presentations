@@ -1,0 +1,38 @@
+//Popover styles
+.popOver {
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #d6dadc;
+    border-bottom-color: #c4c9cc;
+    box-shadow: 0 1px 6px rgba(0,0,0,.15);
+    overflow: hidden;
+    position: absolute;
+    //right: -9999px;
+    top: -9999px;
+    width: 300px;
+    z-index: 20;
+    min-height: 40px;
+    .label {
+        text-align: center;
+    }
+    .content {
+        padding: 0 10px 10px;
+    }
+    &.open {
+        display: block;
+    }
+    ul li {
+        padding: 12px 20px;
+        color: #333;
+        cursor: pointer;
+        &:hover {
+            background-color: #e2eef9;
+        }
+        a {
+            color: inherit;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload</title>
+    <script src="/static/lib/inline-0.9.3.js"></script>
+</head>
+<body>
+
+<style type="text/css">
+
+#droppad {
+    border: 1px solid #ccc;
+    width: 200px;
+    height: 100px;
+}
+#droppad span {
+    margin: 0 auto;
+    margin-top: 40px;
+}
+</style>
+
+<div id="droppad">
+    <span>Drop</span>
+</div>
+
+<script>
+    var inline = new Inline();
+    var droppad = document.getElementById('droppad');
+
+    droppad.ondragenter = function(e) {
+       e.stopPropagation();
+       e.preventDefault();
+       droppad.className = 'dragover';
+    }
+
+    droppad.ondragover = function(e) {
+       e.stopPropagation();
+       e.preventDefault();
+    }
+
+    droppad.ondragleave = function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        droppad.className = '';
+    }
+
+    droppad.ondrop = function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        droppad.className = '';
+        var files = e.target.files || e.dataTransfer.files;
+        var file = files[0];
+        inline.upload('/ajax/property/upload/', file).apply(inline.log);
+    }
+</script>
+
+</body>
+</html>

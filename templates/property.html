@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% include "header.html" %}
+
+    <div class="account">
+        <div class="cover smallCover addPropertyWrapper">
+            <div class="wideProgress clearfix">
+                <div class="block left">
+                    Skref 1
+                    <small>Lýsing</small>
+                </div>
+            </div>
+            <div class="container">
+                <div class="columns">
+                    <div class="one-half column">
+
+                        <div class="whtieCard addPropertyCard">
+                            <h2>Skref 1.</h2>
+
+                            <p>Lýstu eigninni þinni</p>
+                            <textarea
+                                    placeholder="Dæmi: Fallegur bústaður á besta stað. Með útsýni sem orð fá ekki lýst..."></textarea>
+                        </div>
+                        <div class="columns stepBtns">
+                            <div class="one-half column">
+                                <button class="btn btn-lg btn-green btn-block left not-visible">Áfram</button>
+                            </div>
+                            <div class="one-half column">
+                                <button class="btn btn-lg btn-green btn-block right">Áfram</button>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+
+
+            <div class="columns">
+                <div class="three-fourths column centered">
+
+
+                    <div class="properties push-up">
+
+                        <div class="columns itemCard">
+                            <div class="one-fourth column image">
+                                <div class="addProperty">
+                                    Bæta við eign
+                                </div>
+                            </div>
+                            <div class="three-fourths">
+
+                            </div>
+                        </div>
+
+
+                        <div data-bind="foreach: places">
+                            <div class="columns itemCard">
+                                <div class="one-fourth column image">
+                                    <img src="/static/images/blank.gif" alt="" data-bind="bgImage: $data.images[0]"/>
+                                </div>
+                                <div class="three-fourths column coverAll">
+                                    <div>
+                                        <h3 data-bind="text: $data.lang[$root.lang()].name"></h3>
+
+                                        <p data-bind="text: $data.lang[$root.lang()].desc"></p>
+
+                                        <div class="actions">
+                                            <ul>
+                                                <li class="btn btn-outline">
+                                                    <a data-bind="attr: {href: '/account/edit/' + $data.id}">
+                                                        <span class="ion-edit"></span>
+                                                        Breyta
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="/static/js/account.js"></script>
+{% endblock %}

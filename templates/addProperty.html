@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block header %}{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block content %}
+    <div id="addPropertyTmpl">
+        <div class="parent">
+
+            <div class="sidebar">
+                <p class="icon-left ion-information-circled active"> Grunn upplýsingar</p>
+
+                <p id="test" class="icon-left ion-drag"> Lýsing á eign</p>
+
+                <p class="icon-left ion-images"> Myndir</p>
+
+                <p class="icon-left ion-cash"> Verð</p>
+
+                <p class="icon-left ion-coffee"> Aðstaða</p>
+
+                <p class="icon-left ion-clipboard"> Annað</p>
+            </div>
+
+            <div class="steps">
+                <div id="step1" class="step">
+
+                    <div class="listingSteps">
+                        <h2>Tegund eignar</h2>
+
+                        <div class="radioBox">
+                            <div class="item icon-left ion-ios-home"> Sumarbústaður</div>
+                        </div>
+                        <div class="radioBox">
+                            <div class="item icon-left ion-ios-home"> Einbýlishús</div>
+                        </div>
+                        <div class="radioBox">
+                            <div class="item icon-left ion-ios-home"> Íbúð</div>
+                        </div>
+                        <div class="radioBox">
+                            <div class="item icon-left ion-ios-home"> Stúdíó íbúð</div>
+                        </div>
+                        <div class="radioBox">
+                            <div class="item icon-left ion-ios-home"> Sameiginlegt rými</div>
+                        </div>
+                    </div>
+
+                    <div class="listingSteps">
+                        <h2>Svefnpláss</h2>
+
+                        <div class="radioBox number">
+                            <div>1</div>
+                        </div>
+
+                        <div class="radioBox number">
+                            <div>2</div>
+                        </div>
+
+                        <div class="radioBox number">
+                            <div>3</div>
+                        </div>
+
+                        <div class="radioBox number">
+                            <div>4</div>
+                        </div>
+
+                        <div class="radioBox number">
+                            <div>5</div>
+                        </div>
+
+                        <div class="radioBox number">
+                            <div>6</div>
+                        </div>
+
+                        <div class="dropdown">
+                            <input id="checkbox1" type="checkbox" name="checkbox" checked/>
+                            <label for="checkbox1">
+                                <div class="drop-ttl ion-android-arrow-dropdown"> Fleiri</div>
+                                <ul>
+                                    <li>7</li>
+                                    <li>8</li>
+                                    <li>9</li>
+                                    <li>10</li>
+                                    <li>11</li>
+                                    <li>12</li>
+                                    <li>13</li>
+                                    <li>14</li>
+                                    <li>15</li>
+                                    <li>16</li>
+                                    <li>17</li>
+                                    <li>18</li>
+                                    <li>19</li>
+                                    <li>20</li>
+                                    <li>21</li>
+                                    <li>22</li>
+                                    <li>23</li>
+                                    <li>24</li>
+                                    <li>25</li>
+                                </ul>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="listingSteps">
+                        <h2>Staðsetning</h2>
+
+                        <input type="text" class="radioBox">
+
+                        <div class="radioBox">
+                            <div class="ion-android-arrow-dropdown"> Fleiri</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="step2" class="step">
+                    <div class="listingSteps">
+                        <h2>Lýsing á eign</h2>
+
+                        <div class="radioBox">
+                            <div class="ion-android-arrow-dropdown"> Fleiri</div>
+                        </div>
+                    </div>
+
+                    <div class="listingSteps">
+                        <h2>Staðsetning</h2>
+
+                        <input type="text" class="radioBox">
+
+                        <div class="radioBox">
+                            <div class="ion-android-arrow-dropdown"> Fleiri</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script src="/static/js/addProperty.js"></script>
+{% endblock %}

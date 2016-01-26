@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        #flowTmpl .item {
+            float: left;
+            width: 50%;
+            padding: 13px;
+        }
+        .scaleWithParent {
+            width: 100%;
+        }
+        .ownerBlock {
+            overflow: hidden;
+        }
+        .owner {
+            border-radius: 50%;
+            display: block;
+            height: 36px;
+            width: 36px;
+            float: left;
+
+        }
+        .username {
+            padding-left: 10px;
+            color: #333;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: block;
+            line-height: 36px;
+        }
+    </style>
+    <div id="flowTmpl">
+
+        <div class="container">
+            <div class="item">
+                <div class="ownerBlock">
+                    <img class="scaleWithParent" src="https://a1.muscache.com/im/pictures/fa875c5c-93e0-4a28-b336-4d2c04adf6d6.jpg?aki_policy=x_medium" alt="">
+                    <img class="owner" src="https://lh3.googleusercontent.com/-AfxHmkXa4lI/AAAAAAAAAAI/AAAAAAAAAgw/9vrd7-Jl3rI/s72-p-k-rw-no/photo.jpg" alt="">
+                    <a href="#" class="username">Íbúð í Reykjavík</a>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="ownerBlock">
+                    <img class="scaleWithParent" src="https://a1.muscache.com/im/pictures/fa875c5c-93e0-4a28-b336-4d2c04adf6d6.jpg?aki_policy=x_medium" alt="">
+                    <img class="owner" src="https://lh3.googleusercontent.com/-AfxHmkXa4lI/AAAAAAAAAAI/AAAAAAAAAgw/9vrd7-Jl3rI/s72-p-k-rw-no/photo.jpg" alt="">
+                    <a href="#" class="username">Heimili á besta stað</a>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="ownerBlock">
+                    <img class="scaleWithParent" src="https://a1.muscache.com/im/pictures/fa875c5c-93e0-4a28-b336-4d2c04adf6d6.jpg?aki_policy=x_medium" alt="">
+                    <img class="owner" src="https://lh3.googleusercontent.com/-AfxHmkXa4lI/AAAAAAAAAAI/AAAAAAAAAgw/9vrd7-Jl3rI/s72-p-k-rw-no/photo.jpg" alt="">
+                    <a href="#" class="username">Douglas Crockford</a>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="ownerBlock">
+                    <img class="scaleWithParent" src="https://a1.muscache.com/im/pictures/fa875c5c-93e0-4a28-b336-4d2c04adf6d6.jpg?aki_policy=x_medium" alt="">
+                    <img class="owner" src="https://lh3.googleusercontent.com/-AfxHmkXa4lI/AAAAAAAAAAI/AAAAAAAAAgw/9vrd7-Jl3rI/s72-p-k-rw-no/photo.jpg" alt="">
+                    <a href="#" class="username">Douglas Crockford</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="/static/js/flow.js"></script>
+{% endblock %}

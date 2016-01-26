@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account</title>
+    <script src="/static/lib/inline-0.9.3.js"></script>
+</head>
+<body>
+
+<style type="text/css">
+
+#droppad {
+    border: 1px solid #ccc;
+    width: 200px;
+    height: 100px;
+}
+#droppad span {
+    margin: 0 auto;
+    margin-top: 40px;
+}
+</style>
+
+<div>
+    <button id="test">Test</button>
+</div>
+
+<script>
+    var inline = new Inline();
+
+    document.getElementById('test').onclick = function() {
+        
+        var future = inline.get('/ajax/account/user/');
+
+        inline.run(function() {
+            console.log(future.data);
+            future.data.extra.foo = 'bar';
+        });
+
+        inline.body('/ajax/account/update/', future).apply(inline.log).catch(inline.log);
+    }
+
+</script>
+
+</body>
+</html>

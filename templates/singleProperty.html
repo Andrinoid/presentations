@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/static/css/singleProperty.css">
+{% endblock %}
+
+{% block content %}
+      <div id="singlePropertyTmpl">
+        <div class="w-section main-section bottom-padding">
+          <div id="Latest-post" class="w-container">
+            <div class="w-dyn-list">
+              <div class="w-dyn-items w-clearfix">
+                <div class="w-dyn-item featuredthumbnail">
+                  <a data-ix="featured-wrapper" class="w-inline-block featured-wrapper">
+                    <div>
+                      <div class="category-tag-2">Featured</div>
+                      <div class="featured-image mainPhoto" rv-bgimagebig="pictures.0"></div>
+
+                    </div>
+                    <div class="featured-text">
+                      <div class="featured-title">{title}</div>
+                      <div class="featured-description">{description}</div>
+                      <div class="featured-details">
+                        <div class="w-clearfix"><img class="author-img" rv-pathandimagesrcsmall="sellerPicture">
+                          <div class="author-title lite">{sellerName}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="w-dyn-empty">
+                <ul>
+                  <li>{type}</li>
+                  <li><span>{beds}</span> Beds</li>
+                  <li><span>{rooms}</span> Rooms</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-section">
+          <div class="w-container">
+            <div class="w-row">
+              <div class="w-col w-col-8"><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg" class="photoslider"><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg" class="photoslider"><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg" class="photoslider"><img src="https://d3e54v103j8qbb.cloudfront.net/img/image-placeholder.svg" class="photoslider">
+                <div class="arial infobanner">Hello World</div>
+                <div>
+                  <div class="arial">{description}</div>
+                </div>
+              </div>
+              <div class="w-col w-col-4">
+                <div class="w-form">
+                  <form id="email-form" name="email-form" data-name="Email Form">
+                    <input type="submit" value="Book now" data-wait="Please wait..." class="w-button bookbutton">
+                    <div class="w-row">
+                      <div class="w-col w-col-6 w-col-small-6">
+                        <div class="datelabel">Arrival</div><a href="#" class="w-button datebutton">10 des 2015</a>
+                      </div>
+                      <div class="w-col w-col-6 w-col-small-6">
+                        <div class="datelabel">Departure</div><a href="#" class="w-button datebutton">30 des 2015</a>
+                      </div>
+                    </div>
+                    <div>
+                      <div>
+                        <div class="w-row test">
+                          <div class="w-col w-col-8 w-col-medium-6 w-col-small-6 w-col-tiny-6 test">
+                            <div class="priceandincluded">$52 x 10 nights
+                              <br>Cleaning fee</div>
+                          </div>
+                          <div class="w-col w-col-4 w-col-medium-6 w-col-small-6 w-col-tiny-6">
+                            <div class="alignright">$520
+                              <br>$20</div>
+                          </div>
+                        </div>
+                        <div class="arial test"><strong data-new-link="true">$540</strong>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                  <div class="w-form-done">
+                    <p>Thank you! Your submission has been received!</p>
+                  </div>
+                  <div class="w-form-fail">
+                    <p>Oops! Something went wrong while submitting the form</p>
+                  </div>
+                </div>
+                <ul class="arial">
+                  <li>Television</li>
+                  <li>Hot tub</li>
+                  <li>Sandbox</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-section">
+        <div class="w-container"></div>
+      </div>
+    
+
+{% endblock content %}
+
+{% block scripts %}
+    <script src="/static/js/singleProperty.js"></script>
+{% endblock %}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lorem ipsum</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="/static/lib/ionicicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+
+
+    {% block stylesheets %}{% endblock %}
+
+    <!-- Scripts -->
+    <script src="/static/lib/babel/polyfill.min.js"></script>
+    <script src="/static/lib/jquery.js"></script>
+    <script src="/static/lib/jquery-ui.js"></script>
+    <script src="/static/lib/bootstrap.js"></script>
+    <script src="/static/lib/inline-0.9.3.js"></script>
+    <script src="/static/lib/chainwork.js"></script>
+    <script src="/static/lib/lodash.js"></script>
+    <script src="/static/lib/rivets.js"></script>
+    <script src="/static/lib/global.js"></script>
+
+</head>
+{% block header %}
+    {% include "header.html" %}
+{% endblock %}
+
+{% block content %}{% endblock content %}
+
+{# base.js is where we instane javascripts that is common insted of adding multiple <script> includes here and adding it to transpile #}
+<script src="/static/js/base.js"></script>
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

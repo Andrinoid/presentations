@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pipar kynningar</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/static/css/base.css">
+
+</head>
+
+<body>
+<div class="loginpage">
+    <div class="authframe">
+        <form accept-charset="UTF-8" action="/login/" method="post">
+
+            <div style="margin:0;padding:0;display:inline">
+                <input name="utf8" type="hidden" value="✓">
+                {% csrf_token %}
+            </div>
+            <div class="auth-form-header">
+                <h2>PIPAR\TBWA Kynningar</h2>
+            </div>
+            <div class="auth-form-body">
+                <label for="login_field">
+                    Netfang
+                </label>
+                <input autocapitalize="off" autocorrect="off" autofocus="autofocus" class="input-block" id="login_field"
+                       name="username" tabindex="1" type="text">
+                <label for="password">
+                    Lykilorð <a href="/password_reset">(gleymt lykilorð)</a>
+                </label>
+                <input class="input-block" id="password" name="password" tabindex="2" type="password">
+
+                <div>
+                    <input class="btn btn-primary" data-disable-with="Signing in…" name="commit" tabindex="3" type="submit" value="Sign in">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+{% extends "showBase.html" %}
+
+{% block content %}
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            {% if master %}
+                {% for slide in slides %}
+                    {#there must be a more elegant way to reverse regular slides than to define two loops#}
+                    <section
+                            data-background="{{ slide.image }}"
+                            data-background-size="cover"
+                            data-transition="zoom">
+                        {% if slide.html %}
+                            {{ slide.html | safe }}
+                        {% endif %}
+                    </section>
+                {% endfor %}
+
+            {% else %}
+                {% for slide in slides reversed %}
+                    <section
+                            data-background="{{ slide.image }}"
+                            data-background-size="cover"
+                            data-transition="zoom">
+                        {% if slide.html %}
+                            {{ slide.html | safe }}
+                        {% endif %}
+                    </section>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+    </div>
+    <script>
+
+
+
+    </script>
+    {% if edit %}
+        <script>
+            document.querySelector('.reveal').addEventListener('ready', function (e, rsp) {
+                console.log('dodod');
+            });
+        </script>
+    {% endif %}
+
+{% endblock content %}

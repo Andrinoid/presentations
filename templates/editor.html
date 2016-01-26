@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="editorscope">
+
+<head>
+    <title>Lorem ipsum</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)">
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="/static/lib/ionicicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+
+
+    <!-- Scripts -->
+    <script src="/static/lib/babel/polyfill.min.js"></script>
+    <script src="/static/lib/jquery.js"></script>
+    <script src="/static/lib/jquery-ui.js"></script>
+    <script src="/static/lib/bootstrap.js"></script>
+    <script src="/static/lib/inline-0.9.3.js"></script>
+    <script src="/static/lib/chainwork.js"></script>
+    <script src="/static/lib/lodash.js"></script>
+    <script src="/static/lib/rivets.js"></script>
+    <script src="/static/lib/textfit.js"></script>
+    <script src="/static/lib/global.js"></script>
+
+</head>
+
+<body>
+<div id="editorTmpl" class="hide-bindings">
+
+    <!-- **************** -->
+    <!--     TOP BAR      -->
+    <!-- **************** -->
+    <div id="top-bar">
+        <div class="button" data-toggle="tooltip" data-placement="bottom" title="Preview mode"><span
+                class="icon ion-eye" title="Toggle Preview"></span></div>
+        <a rv-href="app.data.promotion.link" target="_blank">
+            <div class="button" data-toggle="tooltip" data-placement="bottom" title="Present"><span
+                    class="icon ion-play"></span></div>
+        </a>
+    </div>
+
+
+    <div id="left-sidebar">
+        <div target="_blank" class="button logo">
+            <i class="icon-main logo" onclick="window.location = '/'"></i>
+
+            <div class="spinner"></div>
+            {#currently not used#}
+        </div>
+        <div class="sub">
+            <!-- **************** -->
+            <!--   SLIDES BAR     -->
+            <!-- **************** -->
+            <div class="box slides-container">
+                <div class="slides">
+                    <div class="slide" rv-each-slide="app.data.slides" rv-on-click="app.editSlide"
+                         rv-class-focus='slide.focus'>
+                        <div rv-bgimage="slide.image" class="slidebg"></div>
+                        <div class="pointer"></div>
+                    </div>
+                </div>
+                <div class="addBtn" data-toggle="tooltip" data-placement="top" title="Add Slide">
+                    <span class="icon ion-ios-plus-empty"></span>
+
+                    <div data-toggle="modal" data-target="#addSlideModal">Add</div>
+                </div>
+            </div>
+            <!-- **************** -->
+            <!--  TOOL SELECTORS  -->
+            <!-- **************** -->
+            <div class="box tool-controller">
+                <div class="trigger" rv-on-click="app.showTool" data-tooltype="elements" data-toggle="tooltip"
+                     data-placement="right" title="Add content">
+                    <span class="icon ion-plus"></span>
+                </div>
+                <div class="trigger" rv-on-click="app.showTool" data-tooltype="styles" data-toggle="tooltip"
+                     data-placement="right" title="Set styles">
+                    <span class="icon ion-paintbrush"></span>
+                </div>
+                <div class="trigger" rv-on-click="app.showTool" data-tooltype="settings" data-toggle="tooltip"
+                     data-placement="right" title="Settings">
+                    <span class="icon ion-gear-b"></span>
+                </div>
+                    <div class="trigger" rv-on-click="app.saveContent">
+                        <span class="icon ion-play"></span>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="canvas">
+        <iframe frameborder="0" id="promo-iframe"></iframe>
+    </div>
+
+    <div id="left-tools" class="small">
+        <div class="main elements">
+            <div class="header">
+                <h3>Add Content</h3>
+                <div class="close ion-close" rv-on-click="app.closeTool"></div>
+            </div>
+            <div class="tool-content">
+                <div>
+                    <div class="col-100" rv-on-click="app.addText">
+                        <div class="icon ion-compose"></div>
+                        <div class="tool-label">Text</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-100">
+                        <div class="icon ion-image"></div>
+                        <div class="tool-label">Image</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-100">
+                        <div class="icon ion-image"></div>
+                        <div class="tool-label">Image</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="col-100">
+                        <div class="icon ion-code"></div>
+                        <div class="tool-label">Iframe</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main styles">
+            <div class="header">
+                <h3>Set Styles</h3>
+
+                <div class="close ion-close" rv-on-click="app.closeTool"></div>
+            </div>
+        </div>
+        <div class="main settings">
+            <div class="header">
+                <h3>Settings</h3>
+                <div class="close ion-close" rv-on-click="app.closeTool"></div>
+            </div>
+            <div class="tool-content">
+                <div>
+                    <div class="col-100" rv-on-click="app.removeSlide">
+                        <div class="icon ion-trash-b"></div>
+                        <div class="tool-label">Delete slide</div>
+                    </div>
+                    <div class="col-100" rv-on-click="app.pinAsMaster" rv-class-active="app.currentSlide.isMaster">
+                        <div class="icon ion-pin"></div>
+                        <div class="tool-label">Pin as Masterslide</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- **************** -->
+    <!--      Modals      -->
+    <!-- **************** -->
+    <div id="modals">
+
+        <div class="modal fade" id="addSlideModal" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                        <h4 class="modal-title">Master slides</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="masterThumb" rv-each-master="app.data.masterSlides">
+                            <div class="normalizePosition">
+                                <iframe rv-mastersrc="master.id" frameborder="0"></iframe>
+                                <div class="cover" rv-on-click="app.addSlide"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    //For getting CSRF token
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie != '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    GLOBAL.promotion = {{ promotion | safe }};
+    GLOBAL.slides = {{ slides | safe }};
+    GLOBAL.masterSlides = {{ masterSlides | safe }};
+
+    function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        beforeSend: function (xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+            }
+        }
+    });
+</script>
+<script src="/static/js/editor.js"></script>
+</body>
+
+</html>
+

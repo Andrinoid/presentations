@@ -1,0 +1,377 @@
+@topBarHeight: 35px;
+@bottomBarHeight: 0px;
+@addBtnHeight: 60px;
+@slideWidth: 104px;
+@seethrough: rgba(255, 255, 255, 0.43);
+@toolControllerWidth: 55px;
+@largeToolWidth: 250px;
+@smallToolWidth: 150px;
+@toolStickWidth: 8px;
+//orange
+@themecolor1: #dd783f;
+//lightgray
+@themecolor2: #636363;
+//darkgray
+@themecolor3: #4b4b4b;
+//middlegray
+@themecolor4: #595959;
+//almost black
+@themecolor5: #2B2B2B;
+
+html.editorscope {
+  height: 100%;
+  margin-left: @slideWidth + @toolControllerWidth + 1px;
+  body {
+    height: calc(100% ~ "-" @bottomBarHeight ~ "-" @topBarHeight);
+    margin-top: @topBarHeight;
+    &.mode-tools-elements {
+
+      #left-tools {
+        //display: block !important;
+        .elements {
+          //display: none;
+        }
+      }
+
+    }
+  }
+}
+
+#editorTmpl {
+  width: 100%;
+  height: 100%;
+  #top-bar {
+    width: calc(100% - 105px + 105px);
+    font-size: 11px;
+    text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
+    position: fixed;
+    height: 35px;
+    background: @themecolor3;
+    border-bottom: 1px solid #252525;
+    top: 0;
+    z-index: 27;
+    user-select: none;
+    transition: -webkit-transform 0.4s ease;
+    .button {
+      height: 35px;
+      border-right: 1px solid #2f2f2f;
+      cursor: pointer;
+      min-width: 35px;
+      float: left;
+      padding: 6px 10px 0 10px;
+      .icon {
+        color: @seethrough;
+        font-size: 23px;
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+
+  #left-sidebar {
+    background-color: @themecolor3;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: @slideWidth + 1px + @toolControllerWidth;
+    z-index: 1;
+    border-right: 1px solid #252525;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    .tooltip {
+      white-space: nowrap;
+    }
+    .sub {
+      height: calc(100% ~ "-" @bottomBarHeight ~ "-" @topBarHeight);
+      position: relative;
+      .box {
+        height: 100%;
+        float: left;
+      }
+      .slides-container{
+        width: @slideWidth;
+      }
+      .tool-controller {
+        width: @toolControllerWidth;
+        .trigger {
+          height: @toolControllerWidth;
+          color: @seethrough;
+          font-size: 28px;
+          padding: 13px 0;
+          text-align: center;
+          border-bottom: solid 1px black;
+          cursor: pointer;
+          position: relative;
+          &.active:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            background: @themecolor2;
+            right: -1px;
+            width: 1px;
+          }
+          &.active, &:hover {
+            background-color: #636363;
+            color: white;
+          }
+        }
+        .trigger .icon {
+          display: block;
+        }
+      }
+    }
+    .slides {
+      @splitHeight: @addBtnHeight - @topBarHeight;
+      height: calc(100% ~ "-" @splitHeight ~ "-" @topBarHeight);
+      background: @themecolor5;
+      overflow-y: scroll;
+    }
+    .slide {
+      width: @slideWidth;
+      height: 104px;
+      position: relative;
+      cursor: pointer;
+      &.focus {
+        .pointer {
+          display: block;
+        }
+      }
+      .pointer {
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 20px 17px 20px 0;
+        border-color: transparent @themecolor3 transparent transparent;
+        position: absolute;
+        right: -1px;
+        display: none;
+        top: 30px;
+      }
+    }
+    .slidebg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-size: cover;
+      background-position-y: center;
+      background-position-x: center;
+      background-color: white;
+    }
+
+    .button {
+      opacity: 0.7;
+      &:hover {
+        opacity: 1;
+      }
+      &.logo {
+        height: 36px;
+        position: relative;
+        margin-top: -1px;
+        display: block;
+        padding-top: 11px;
+        padding-bottom: 11px;
+        cursor: pointer;
+        border-bottom: 1px solid #252525;
+      }
+      .icon-main {
+        background-image: url(/static/images/generated/editorsprite@2x.png);
+        background-size: 640px;
+        background-position: 0px -400px;
+        width: 64px;
+        height: 17px;
+        display: block;
+        margin: 0 auto;
+      }
+    }
+
+    .addBtn {
+      background: rgba(34, 34, 34, 0.2);
+      width: @slideWidth;
+      height: 60px;
+      position: absolute;
+      bottom: 0;
+      color: white;
+      opacity: 0.7;
+      cursor: pointer;
+      &:hover {
+        opacity: 1;
+      }
+      .icon {
+        position: absolute;
+        font-size: 37px;
+        top: 50%;
+        transform: translateY(-50%);
+        line-height: 0;
+        left: 10px;
+      }
+      > div {
+        padding-left: 44px;
+        height: 100%;
+        line-height: 62px;
+        font-size: 16px;
+      }
+    }
+  }
+
+  /****************************
+  <--       LEFT TOOLS      -->
+  *****************************/
+
+  #left-tools {
+    @toolBarHeight: @topBarHeight - 1px;
+    height: calc(100% ~ "-" @toolBarHeight);
+    top: 34px;
+    left: @slideWidth + @toolControllerWidth + @toolStickWidth;
+    position: fixed;
+    border-right: 1px solid #2f2f2f;
+    user-select: none;
+    display: none;
+    background: @themecolor3;
+    width: @largeToolWidth;
+    &:before {
+      @borderWidth: 1px;
+      content: " ";
+      position: absolute;
+      height: 100%;
+      width: @toolStickWidth;
+      left: -@toolStickWidth;
+      background: @themecolor2;
+      border: 1px solid #2f2f2f;
+      z-index: 10;
+    }
+    &.small {
+      width: @smallToolWidth;
+    }
+    .main {
+      display: none;
+
+    }
+    .header {
+      background: @themecolor4;
+      position: relative;
+      padding: 9px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      border-top: 1px solid #2f2f2f;
+      border-bottom: 1px solid #272727;
+      h3 {
+        margin: 0;
+        color: #d6d6d6;
+        text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
+        font-size: 15px;
+        font-weight: normal;
+      }
+      .close {
+        color: #fff;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: 14px;
+        right: 13px;
+        opacity: 0.4;
+      }
+      .close:hover {
+        opacity: 1;
+      }
+    }
+    .tool-content {
+      .col-100 {
+        position: relative;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        border-bottom: solid 1px #2f2f2f;
+
+        .icon {
+          color: @seethrough;
+          font-size: 39px;
+        }
+        &:hover, &.active {
+          background: @themecolor2;
+          .icon {
+            color: white;
+          }
+          .tool-label {
+            color: white;
+          }
+        }
+
+        .tool-label {
+          text-shadow: 0 -1px rgba(0, 0, 0, 0.3);
+          color: #8C8C8C;
+        }
+      }
+
+    }
+  }
+  .canvas {
+    background: @themecolor5;
+    position: relative;
+    height: 100%;
+    margin: 0 auto;
+    user-select: none;
+    font-size: 0px;
+    line-height: 0px;
+    #promo-iframe {
+      width: 100%;
+      min-height: 100%;
+      max-height: 100%;
+      border: 0;
+      overflow: hidden;
+    }
+  }
+
+  #modals {
+
+    .modal-content {
+      background-color: white;
+      border-radius: 2px;
+    }
+
+    #addSlideModal {
+      .masterThumb {
+        display: inline-block;
+        position: relative;
+        width: 47.1%;
+        margin: 8px;
+        vertical-align: top;
+        cursor: pointer;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        height: 0;
+        padding-bottom: 34.2%;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        > .normalizePosition {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+      }
+      .masterThumb iframe {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+      .masterThumb .cover {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+    }
+
+  }
+
+}
