@@ -71,7 +71,7 @@ class AddContent {
             elm.draggable('enable');
             this.textedit.remove(elm);
         } catch (e) {
-            if(GLOBAL.debug)
+            if (GLOBAL.debug)
                 console.log(e);
         }
     }
@@ -97,7 +97,7 @@ class AddContent {
             });
 
             el.on('click', (e)=> {
-                if(!$(e.target).hasClass('editem'))
+                if (!$(e.target).hasClass('editem'))
                     return;
                 this.focus(e.target);
             });
@@ -107,8 +107,8 @@ class AddContent {
                     $(e.target).draggable('disable');
                     $(e.target).attr('contenteditable', true);
                     this.textedit.target(e.target);
-                } catch(err) {
-                    if(GLOBAL.debug)
+                } catch (err) {
+                    if (GLOBAL.debug)
                         console.log(err);
                 }
             });
@@ -142,6 +142,7 @@ class EditorModel {
 
     constructor() {
         this.currentSlide = null;
+        this.showGrid = false;
 
         _.bindAll(this, 'editSlide', 'addSlide', 'showTool', 'removeSlide', 'pinAsMaster', 'addText', 'saveContent');
         let template = $('#editorTmpl');
@@ -173,10 +174,13 @@ class EditorModel {
             let data = JSON.parse(event.data);
             let eventName = data.eventName;
 
-            if (eventName === 'ready')
+            if (eventName === 'ready') {
                 this.addcontent.init(data);
-            if (eventName === 'slidechanged')
+                this.generateGrid();
+            }
+            if (eventName === 'slidechanged') {
                 this.addcontent.setIndex(data);
+            }
         }, false);
 
         $('[data-toggle="tooltip"]').tooltip();//initialize bootstrap tooltips
@@ -223,6 +227,52 @@ class EditorModel {
         }).disableSelection();
         $('.slides .slide').eq(0).trigger('click');
     }
+
+    generateGrid() {
+        var self = this;
+        //grid width and height
+        var bw = 1000;
+        var bh = 561;
+        //padding around grid
+        var p = 0;
+
+        var canvas = $('#grid');
+        var context = canvas.get(0).getContext("2d");
+
+        function drawBoard() {
+            for (var x = 0; x <= bw; x += 40) {
+                context.moveTo(0.5 + x + p, p);
+                context.lineTo(0.5 + x + p, bh + p);
+            }
+
+            for (var x = 0; x <= bh; x += 40) {
+                context.moveTo(p, 0.5 + x + p);
+                context.lineTo(bw + p, 0.5 + x + p);
+            }
+
+            context.strokeStyle = "white";
+            context.stroke();
+        }
+
+        function setposition() {
+            let pos = self.addcontent.dom.find('.slides').offset();
+            let offset = $('body').offset();
+            canvas.offset({
+                top:pos.top + offset.top,
+                left:pos.left + offset.left
+            });
+        }
+
+        drawBoard();
+        setposition();
+
+    }
+
+    toggleGrid(e) {
+        this.showGrid = !this.showGrid;
+        console.log(this.showGrid);
+    }
+
 
     editSlide(e, data) {
         _.each(this.data.slides, function (obj) {// remove focus of all other slides

@@ -5,8 +5,10 @@ class TextEdit {
 
         this.root = root.find('body');
 
+         //https://icomoon.io/
         let icons = `
         <div id="svg-editor-icons">
+
             <svg>
                 <symbol id="icon-plus" viewBox="0 0 1024 1024">
                     <title>plus</title>
@@ -17,6 +19,7 @@ class TextEdit {
                     <title>minus</title>
                     <path class="path1" d="M0 416v192c0 17.672 14.328 32 32 32h960c17.672 0 32-14.328 32-32v-192c0-17.672-14.328-32-32-32h-960c-17.672 0-32 14.328-32 32z"></path>
                 </symbol>
+
                 <symbol id="icon-bold" viewBox="0 0 1024 1024">
                     <title>bold</title>
                     <path class="path1" d="M707.88 484.652c37.498-44.542 60.12-102.008 60.12-164.652 0-141.16-114.842-256-256-256h-320v896h384c141.158 0 256-114.842 256-256 0-92.956-49.798-174.496-124.12-219.348zM384 192h101.5c55.968 0 101.5 57.42 101.5 128s-45.532 128-101.5 128h-101.5v-256zM543 832h-159v-256h159c58.45 0 106 57.42 106 128s-47.55 128-106 128z"></path>

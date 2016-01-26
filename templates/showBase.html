@@ -40,7 +40,7 @@
     // https://github.com/hakimel/reveal.js#configuration
     Reveal.initialize({
         width: 1000,
-        height: 563,
+        height: 559,
         controls: true,
         history: true,
         center: true,
@@ -48,7 +48,7 @@
         {% if edit %}
             {# edit is true when slide is inside the editor iframe #}
             postMessageEvents: true,
-            minScale: 0.7,
+            minScale: 1,
 			maxScale: 1,
         {% endif %}
         {% if master  %}

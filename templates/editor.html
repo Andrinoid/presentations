@@ -82,9 +82,13 @@
                      data-placement="right" title="Settings">
                     <span class="icon ion-gear-b"></span>
                 </div>
-                    <div class="trigger" rv-on-click="app.saveContent">
-                        <span class="icon ion-play"></span>
-                    </div>
+                 <div class="trigger" rv-on-click="app.showTool" data-tooltype="devtools" data-toggle="tooltip"
+                     data-placement="right" title="Settings">
+                    <span class="icon ion-grid"></span>
+                 </div>
+                <div class="trigger" rv-on-click="app.saveContent">
+                    <span class="icon ion-ios-cloud-upload"></span>
+                </div>
             </div>
 
         </div>
@@ -92,6 +96,12 @@
 
     <div class="canvas">
         <iframe frameborder="0" id="promo-iframe"></iframe>
+        <div id="overlays">
+            <canvas id="grid" width="1005" height="563" style="opacity: 0.4;" rv-hide="showbutton"></canvas>
+            <div class="droppad">
+
+            </div>
+        </div>
     </div>
 
     <div id="left-tools" class="small">
@@ -148,6 +158,21 @@
                     <div class="col-100" rv-on-click="app.pinAsMaster" rv-class-active="app.currentSlide.isMaster">
                         <div class="icon ion-pin"></div>
                         <div class="tool-label">Pin as Masterslide</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main devtools">
+            <div class="header">
+                <h3>Development</h3>
+                <div class="close ion-close" rv-on-click="app.closeTool"></div>
+            </div>
+            <div class="tool-content">
+                <div>
+                    <div class="col-100" rv-value="showgrid">
+                        <h1 toggle>{ app.showGrid }</h1>
+                        <div class="icon ion-ios-grid-view-outline"></div>
+                        <div class="tool-label">Show grid</div>
                     </div>
                 </div>
             </div>
